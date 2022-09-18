@@ -1,0 +1,196 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: { typeNamePlural: 'Kitchen Appliances',
+                  typeName: 'Kitchen Appliance',
+                  imageUrl: 'Imageurl' }
+@UI.presentationVariant: [{sortOrder: [{by: 'Prodid', direction: #ASC },
+                                       {by: 'Pgid', direction: #ASC }] }]
+
+annotate view zar_c_product with
+{
+  // Header Facet
+  @UI.facet: [
+             {purpose:  #HEADER,
+             position: 20,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'HeaderPrice'
+             },
+             {purpose:  #HEADER,
+             position: 30,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'HeaderProductID'
+             },
+             {purpose:  #HEADER,
+             position: 40,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'HeaderTaxRate'
+             },
+  //Collection Facet
+  //Facet General Information
+             {label: 'General Information',
+             id: 'GeneralInfo',
+             purpose: #STANDARD,
+             position: 10,
+             type: #COLLECTION
+             },
+  //Facet Admin Data
+             {label: 'Admin Data',
+             id: 'AdminData',
+             purpose: #STANDARD,
+             position: 20,
+             type: #COLLECTION
+             },
+  //Facet Markets
+             {
+             label: 'Markets',
+             purpose: #STANDARD, 
+             type: #LINEITEM_REFERENCE,
+             position: 30,
+             targetElement: '_ProductMarket'
+             },
+  //Facet Market Quantity Chart
+             {
+             label: 'Market Quantity',
+             purpose: #STANDARD, 
+             type: #CHART_REFERENCE,
+             position: 40,
+             targetQualifier: 'ChartMarketQuantity',
+             targetElement: '_ProductMarket'
+             },
+   //Facet Market Amount Chart
+             {
+             label: 'Market Amount',
+             purpose: #STANDARD, 
+             type: #CHART_REFERENCE,
+             position: 50,
+             targetQualifier: 'ChartMarketAmount',
+             targetElement: '_ProductMarket'
+             },                         
+  //General Information Groups 
+  //Field Group 'Basic Data'
+             {label: 'Basic Data',
+             purpose: #STANDARD,
+             position: 10,
+             type: #IDENTIFICATION_REFERENCE,
+             parentId: 'GeneralInfo'},
+  //Field Group 'Size Dimensions'
+             {label: 'Size Dimensions',
+             purpose: #STANDARD,
+             position: 20,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'GeneralInfo',
+             targetQualifier: 'SizeDimensionsGroup'},
+  //Field Group 'Price Details'
+             {label: 'Price Details',
+             purpose: #STANDARD,
+             position: 30,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'GeneralInfo',
+             targetQualifier: 'PriceDetailsGroup'},
+  //Admin Data Groups
+  //Field Group 'Create Info'
+             {label: 'Create Info',
+             purpose: #STANDARD,
+             position: 10,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'AdminData',
+             targetQualifier: 'CreateInfoGroup'},
+  //Field Group 'Change Info'
+             {label: 'Change Info',
+             purpose: #STANDARD,
+             position: 20,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'AdminData',
+             targetQualifier: 'ChangeInfoGroup'}
+    ]
+
+
+  @Consumption.valueHelpDefinition:
+        [{ entity: { name: 'zar_i_prodid',
+                     element: 'Prodid' } }]
+  @UI: { lineItem:       [ { position: 10 } ],
+         identification: [ { position: 10 } ],
+         selectionField: [ { position: 10 } ]
+       }
+  @UI.dataPoint: { qualifier: 'HeaderProductID', title: 'Product ID' }
+  Prodid;
+    @Consumption.valueHelpDefinition:
+        [{ entity: { name: 'zar_i_prod_group',
+                     element: 'Pgname'  },
+                     additionalBinding: [
+                   { localElement: 'Pgid',
+                     element: 'Pgid' }] }]
+  @UI: { lineItem:       [ { position: 25 } ],
+         identification: [ { position: 20, label: 'Product Group Name' }
+                             ,{ type: #FOR_ACTION, dataAction: 'get_pgname_transl',
+                             label: 'Translate', position: 5 }
+                              ],
+         selectionField: [ { position: 30 } ]
+       }
+  Pgname; 
+  @UI: { 
+    identification: [ { position: 23, label: 'Product Group (trans.)'} ] }
+  PgnameTrans;
+   @Consumption.valueHelpDefinition:
+         [{ entity: { name: 'zar_i_market_lang',
+             element: 'Code' } }]
+   @UI: { 
+    identification: [ { position: 26, label: 'Trans. Lang.' } ] } 
+  TransCode;
+  @Consumption.valueHelpDefinition:
+        [{ entity: { name: 'zar_i_phase',
+                     element: 'Phase'  } }]
+  @UI.textArrangement: #TEXT_ONLY
+  @UI: { lineItem:       [ { position: 30, criticality: 'Phaseid' }
+                          ,{ type: #FOR_ACTION, dataAction: 'move_to_next_phase',
+                             label: 'Move to Next Phase', position: 20 }
+                          ,{ type: #FOR_ACTION, dataAction: 'make_copy',
+                             label: 'Make Copy', position: 10 } ],
+                             
+         identification: [ { position: 30, criticality: 'Phaseid' }
+                            ,{ type: #FOR_ACTION, dataAction: 'move_to_next_phase',
+                             label: 'Move to Next Phase', position: 20 }
+                            ,{ type: #FOR_ACTION, dataAction: 'make_copy',
+                             label: 'Make Copy', position: 10 } ],
+         selectionField: [ { position: 20 } ]
+       }
+  Phaseid;
+  @EndUserText.label: 'Net Price'
+  @UI: { lineItem:       [ { position: 40 } ],
+         selectionField: [ { position: 40 } ] }
+  @UI.dataPoint: { qualifier: 'HeaderPrice', title: 'Net Price' }
+  @UI.fieldGroup: [ { qualifier: 'PriceDetailsGroup', position: 10 }]
+  Price;
+  @Consumption.valueHelpDefinition:
+        [{ entity: { name: 'zar_i_currency',
+                     element: 'Currency'  } }]
+  PriceCurrency;
+  @EndUserText.label: 'Tax Rate'
+  @UI: { lineItem:       [ { position: 50 } ] }
+  @UI.dataPoint: { qualifier: 'HeaderTaxRate', title: 'Tax Rate' }
+  @UI.fieldGroup: [ { qualifier: 'PriceDetailsGroup', position: 20 }]
+  Taxrate;
+  @UI: { lineItem:       [ { position: 60 } ] }
+  @UI.fieldGroup: [ { qualifier: 'SizeDimensionsGroup', position: 20 }]
+  Depth;
+  @UI: { lineItem:       [ { position: 80 } ] }
+  @UI.fieldGroup: [ { qualifier: 'SizeDimensionsGroup', position: 30 }]
+  Width;
+  @UI: { lineItem:       [ { position: 70 } ] }
+  @UI.fieldGroup: [ { qualifier: 'SizeDimensionsGroup', position: 10 }]
+  Height;
+  @Consumption.valueHelpDefinition:
+        [{ entity: { name: 'zar_i_uom',
+                     element: 'Msehi'  } }]
+  SizeUOM;
+  @UI.fieldGroup: [ { qualifier: 'CreateInfoGroup', position: 10 }]
+  CreatedBy;
+  @EndUserText.label: 'Create Time'
+  @UI.fieldGroup: [ { qualifier: 'CreateInfoGroup', position: 20 }]
+  CreationTime;
+  @UI.fieldGroup: [ { qualifier: 'ChangeInfoGroup', position: 10 }]
+  ChangedBy;
+  @EndUserText.label: 'Change Time'
+  @UI.fieldGroup: [ { qualifier: 'ChangeInfoGroup', position: 20 }]
+  ChangeTime;
+
+}

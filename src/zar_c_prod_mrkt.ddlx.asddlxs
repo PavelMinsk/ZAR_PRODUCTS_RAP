@@ -1,0 +1,164 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {typeName: 'Market',
+                 imageUrl: 'ImageCountryURL' }
+@UI.presentationVariant: [{sortOrder: [{by: 'Mrktid', direction: #ASC },
+                                       {by: 'Status', direction: #ASC }] }]
+@UI.chart: [{
+    qualifier: 'ChartMarketQuantity',  
+    chartType: #DONUT,
+    dimensions: [ 'MarketName'],
+    measures: [ 'TotalGrossAmount' ],
+    description: 'The Donut chart describes the quantity of goods by markets.' },
+  { qualifier: 'ChartMarketAmount',  
+    chartType: #BAR,
+    dimensions: [ 'MarketName'],
+    measures: [ 'TotalGrossAmount', 'TotalNetAmount' ],
+    dimensionAttributes: [ {dimension: 'TotalGrossAmount', role: #CATEGORY},
+                           {dimension: 'TotalNetAmount'  , role: #CATEGORY2} ],
+    description: 'The Donut chart describes the Gross and Net Total Amount of goods by markets.'
+    } ]
+annotate view zar_c_prod_mrkt with
+{
+  // Header Facet
+  @UI.facet: [
+             {purpose:  #HEADER,
+             position: 10,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'Enddate'
+             },
+             {purpose:  #HEADER,
+             position: 20,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'MarketName'
+             },
+             {purpose:  #HEADER,
+             position: 30,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'Startdate'
+             },
+  //Collection Facet
+  //Facet General Information
+             {label: 'General Information',
+             id: 'GeneralInfo',
+             purpose: #STANDARD,
+             position: 10,
+             type: #COLLECTION
+             },
+  //Facet Admin Data
+             {label: 'Admin Data',
+             id: 'AdminData',
+             purpose: #STANDARD,
+             position: 20,
+             type: #COLLECTION
+             },
+  //Facet Orders
+             {label: 'Orders',
+             purpose: #STANDARD,
+             position: 30,
+             type: #LINEITEM_REFERENCE,
+             targetElement: '_MarketOrder'
+             },
+        
+  //Facet Order Quantity Chart
+             {label: 'Order Quantity',
+             purpose: #STANDARD,
+             position: 40,
+             type: #CHART_REFERENCE,
+             targetQualifier: 'ChartOrderQuantity',
+             targetElement: '_TotalDeliv'             
+//             targetElement: '_MarketOrder'
+             },
+  //Facet Order Amount Chart
+             {label: 'Order Amount',
+             purpose: #STANDARD,
+             position: 50,
+             type: #CHART_REFERENCE,
+             targetQualifier: 'ChartOrderAmount',
+             targetElement: '_TotalDeliv'
+//             targetElement: '_MarketOrder'
+             },
+  //General Information Groups
+  //Field Group 'Basic Data'
+             {label: 'Basic Data',
+             purpose: #STANDARD,
+             position: 10,
+             type: #IDENTIFICATION_REFERENCE,
+             parentId: 'GeneralInfo'},
+  //Field Group 'Dates'
+             {
+  //             label: '',
+             purpose: #STANDARD,
+             position: 20,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'GeneralInfo',
+             targetQualifier: 'Dates'},
+  //Admin Data Groups
+  //Field Group 'Create Info'
+             {label: 'Create Info',
+             purpose: #STANDARD,
+             position: 10,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'AdminData',
+             targetQualifier: 'CreateInfoGroup'},
+  //Field Group 'Change Info'
+             {label: 'Change Info',
+             purpose: #STANDARD,
+             position: 20,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'AdminData',
+             targetQualifier: 'ChangeInfoGroup'}
+    ]
+
+
+  //  @EndUserText.label: 'Market ID'
+  //  @UI: { lineItem:       [ { position: 10 } ],
+  //         identification: [ { position: 10 } ]}
+  //  Mrktid;
+
+  @Consumption.valueHelpDefinition:
+        [{ entity: { name: 'zar_i_market',
+                     element: 'Mrktname'  },
+                     additionalBinding: [
+                   { localElement: 'Mrktid',
+                     element: 'Mrktid' }] }]
+  @UI: { lineItem:       [ { position: 10 } ],
+         identification: [ { position: 10 } ]}
+  @UI.dataPoint: { qualifier: 'MarketName', title: 'Country' }
+  @EndUserText.label: 'Market'
+  MarketName;
+  @UI: { lineItem:       [ { position: 15 } ]}
+  ISOcode;
+  @UI: { lineItem:       [ { position: 20, criticality: 'StatusCriticality' },
+                           { type: #FOR_ACTION, dataAction: 'confirm',
+                           label: 'Confirm', position: 10 } ],
+         identification: [ { position: 20, criticality: 'StatusCriticality' },
+                           { type: #FOR_ACTION, dataAction: 'confirm',
+                           label: 'Confirm', position: 10 } ]}
+  @EndUserText.label: 'Confirmed?'
+  Status;
+  @UI: { lineItem:       [ { position: 30 } ]}
+  @UI.dataPoint: { qualifier: 'Startdate'  }
+  @UI.fieldGroup: [ { qualifier: 'Dates', position: 10 }]
+  Startdate;
+  @UI: { lineItem:       [ { position: 40 } ]}
+  @UI.dataPoint: { qualifier: 'Enddate'  }
+  @UI.fieldGroup: [ { qualifier: 'Dates', position: 20 }]
+  Enddate;
+  @UI: { lineItem:       [ { position: 70 } ] }
+  TotalQuantity;
+  @UI: { lineItem:       [ { position: 80 } ] }
+  TotalNetAmount;
+  @UI: { lineItem:       [ { position: 90 } ] }
+  TotalGrossAmount;
+  @UI.fieldGroup: [ { qualifier: 'CreateInfoGroup', position: 10 }]
+  CreatedBy;
+  @EndUserText.label: 'Create Time'
+  @UI.fieldGroup: [ { qualifier: 'CreateInfoGroup', position: 20 }]
+  CreationTime;
+  @UI.fieldGroup: [ { qualifier: 'ChangeInfoGroup', position: 10 }]
+  ChangedBy;
+  @EndUserText.label: 'Change Time'
+  @UI.fieldGroup: [ { qualifier: 'ChangeInfoGroup', position: 20 }]
+  ChangeTime;
+
+}

@@ -1,0 +1,4 @@
+@EndUserText.label: 'Service definition for Suppliers'
+define service ZAR_SC_SUPPLIERS_C {
+  expose ZAR_SUPPLIERS_C as Suppliers;
+}

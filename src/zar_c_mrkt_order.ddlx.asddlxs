@@ -1,0 +1,143 @@
+@Metadata.layer: #CORE
+@UI.headerInfo: {typeName: 'Order',
+                 typeNamePlural: 'Orders',
+                 imageUrl: 'ImageOrderURL' }
+@UI.presentationVariant: [{sortOrder: [{by: 'DeliveryDate', direction: #ASC },
+                                       {by: 'Orderid', direction: #ASC }] }]
+
+annotate view zar_c_mrkt_order with
+{
+  // Header Facet
+  @UI.facet: [
+             {purpose:  #HEADER,
+             position: 10,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'GrossAmount'
+             },
+             {purpose:  #HEADER,
+             position: 20,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'NetAmount'
+             },
+             {purpose:  #HEADER,
+             position: 30,
+             type: #DATAPOINT_REFERENCE,
+             targetQualifier: 'Orderid'
+             },
+  //Collection Facet
+  //Facet General Information
+             {label: 'General Information',
+             id: 'GeneralInfo',
+             purpose: #STANDARD,
+             position: 10,
+             type: #COLLECTION
+             },
+   //Facet Business Partner
+             {label: 'Business Partner',
+             id: 'BusinessPartner',
+             purpose: #STANDARD,
+             position: 15,
+             type: #COLLECTION
+             },
+  //Facet Admin Data
+             {label: 'Admin Data',
+             id: 'AdminData',
+             purpose: #STANDARD,
+             position: 20,
+             type: #COLLECTION
+             },
+  //General Information Groups
+  //Field Group 'Basic Data'
+             {label: 'Basic Data',
+             purpose: #STANDARD,
+             position: 10,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'GeneralInfo',
+             targetQualifier: 'BasicData'},
+  //Business Partner Groups
+  //Field Group 'Business Partner Info'
+             {label: 'Business Partner Info',
+             purpose: #STANDARD,
+             position: 10,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'BusinessPartner',
+             targetQualifier: 'BusinessPartnerInfo'},
+  //Admin Data Groups
+  //Field Group 'Create Info'
+             {label: 'Create Info',
+             purpose: #STANDARD,
+             position: 10,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'AdminData',
+             targetQualifier: 'CreateInfoGroup'
+             },
+  //Field Group 'Change Info'
+             {label: 'Change Info',
+             purpose: #STANDARD,
+             position: 20,
+             type: #FIELDGROUP_REFERENCE,
+             parentId: 'AdminData',
+             targetQualifier: 'ChangeInfoGroup'
+             } ]
+
+  @UI: { lineItem:       [ { position: 10 } ] }
+  @UI.dataPoint: { qualifier: 'Orderid' }
+  @UI.fieldGroup: [ { qualifier: 'BasicData', position: 10 }]
+  Orderid;
+  @UI: { lineItem:       [ { position: 40 } ] }
+  @UI.fieldGroup: [ { qualifier: 'BasicData', position: 50 }]
+  Quantity;
+  @EndUserText.label: 'Year'
+  @UI: { lineItem:       [ { position: 20 } ] }
+  @UI.fieldGroup: [ { qualifier: 'BasicData', position: 30 }]
+  CalendarYear;
+  @UI: { lineItem:       [ { position: 30 } ] }
+  @UI.fieldGroup: [ { qualifier: 'BasicData', position: 40 }]
+  DeliveryDate;
+  @EndUserText.label: 'Business Partner ID'
+  @UI.fieldGroup: [ { qualifier: 'BusinessPartnerInfo', position: 10 }]
+  @Consumption.valueHelpDefinition:
+      [{ entity: { name: 'zar_i_business_partner_c',
+                   element: 'BusinessPartner'  },
+                   additionalBinding:
+                 [{ localElement: 'BussPartnerName',
+                   element: 'BusinessPartnerFullName' },
+                  { localElement: 'BussPartnerGroup',
+                   element: 'BusinessPartnerGrouping' }] }]
+  BussPartner;
+  @UI.fieldGroup:  [ { qualifier: 'BusinessPartnerInfo', position: 20 },
+                        { label: 'Bussiness Partner Name' }]
+  @UI: { lineItem: [ { position: 35 },
+                     { label: 'Bussiness Partner' } ] }
+  BussPartnerName;
+  @EndUserText.label: 'Business Partner Group'
+  @UI.fieldGroup: [ { qualifier: 'BusinessPartnerInfo', position: 30 }]
+  BussPartnerGroup;
+  @UI: { lineItem:       [ { position: 50 } ] }
+  @UI.dataPoint: { qualifier: 'NetAmount'   }
+  NetAmount;
+  @UI: { lineItem:       [ { position: 60 } ] }
+  @UI.dataPoint: { qualifier: 'GrossAmount' }
+  GrossAmount;
+  @EndUserText.label: 'Confirmed?'
+  @UI.fieldGroup:  [ { qualifier: 'BasicData', position: 20, criticality: 'OrderStatusCriticality' }]
+  @UI: {     lineItem: [ { position: 70, criticality: 'OrderStatusCriticality' },
+                         { type: #FOR_ACTION, dataAction: 'confirm_order',
+                           label: 'Confirm', position: 10 }  ] ,
+       identification: [ { type: #FOR_ACTION, dataAction: 'confirm_order',
+                           label: 'Confirm', position: 10 }  ]  }
+  OrderStatus;
+
+  @UI.fieldGroup: [ { qualifier: 'CreateInfoGroup', position: 10 }]
+  CreatedBy;
+  @EndUserText.label: 'Create Time'
+  @UI.fieldGroup: [ { qualifier: 'CreateInfoGroup', position: 20 }]
+  CreationTime;
+  @UI.fieldGroup: [ { qualifier: 'ChangeInfoGroup', position: 10 }]
+  ChangedBy;
+  @EndUserText.label: 'Change Time'
+  @UI.fieldGroup: [ { qualifier: 'ChangeInfoGroup', position: 20 }]
+  ChangeTime;
+
+
+}

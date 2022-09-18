@@ -1,0 +1,10 @@
+@EndUserText.label: 'Access control for ZAR_I_PRODUCT'
+@MappingRole: true
+define role ZAR_I_PRODUCT {
+    grant
+        select
+            on
+                ZAR_I_PRODUCT
+                    where true ;
+                        
+}

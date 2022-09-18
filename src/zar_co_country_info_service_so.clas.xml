@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_CLAS" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <VSEOCLASS>
+    <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+    <LANGU>E</LANGU>
+    <DESCRIPT>Proxy Class (generated)</DESCRIPT>
+    <STATE>1</STATE>
+    <CLSCCINCL>X</CLSCCINCL>
+    <FIXPT>X</FIXPT>
+    <UNICODE>X</UNICODE>
+    <RSTAT>P</RSTAT>
+    <CLSPROXY>X</CLSPROXY>
+   </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>CAPITAL_CITY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the name of the captial city for the passed country</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>COUNTRIES_USING_CURRENCY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of all countries that use the same currency c</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>COUNTRY_CURRENCY</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the currency ISO code and name for the passed countr</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>COUNTRY_FLAG</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a link to a picture of the country flag</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>COUNTRY_INT_PHONE_CODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the internation phone code for the passed ISO countr</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>COUNTRY_ISOCODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>This function tries to found a country based on the passed c</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>COUNTRY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Searches the database for a country by the passed ISO countr</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>CURRENCY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns the name of the currency (if found)</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>FULL_COUNTRY_INFO</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a struct with all the stored country information. Pa</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>FULL_COUNTRY_INFO_ALL_COUNTRIE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns an array with all countries and all the language inf</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LANGUAGE_ISOCODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Find a language ISO code based on the passed language name</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LANGUAGE_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Find a language name based on the passed ISO language code</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_CONTINENTS_BY_CODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of continents ordered by code.</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_CONTINENTS_BY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of continents ordered by name.</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_COUNTRY_NAMES_BY_CODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of all stored counties ordered by ISO code</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_COUNTRY_NAMES_BY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of all stored counties ordered by country nam</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_COUNTRY_NAMES_GROUPED</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of all stored counties grouped per continent</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_CURRENCIES_BY_CODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of currencies ordered by code.</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_CURRENCIES_BY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns a list of currencies ordered by name.</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_LANGUAGES_BY_CODE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns an array of languages ordered by code</DESCRIPT>
+    </SEOCOMPOTX>
+    <SEOCOMPOTX>
+     <CLSNAME>ZAR_CO_COUNTRY_INFO_SERVICE_SO</CLSNAME>
+     <CMPNAME>LIST_OF_LANGUAGES_BY_NAME</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Returns an array of languages ordered by name</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
+  </asx:values>
+ </asx:abap>
+</abapGit>

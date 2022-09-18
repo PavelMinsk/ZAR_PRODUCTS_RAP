@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZAR_MSG_PROD</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Messages for Products</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>Product Group ID doesn&apos;t exist</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>002</MSGNR>
+     <TEXT>Product ID already exist</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>003</MSGNR>
+     <TEXT>Market &amp;1 doesn&apos;t exist</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>004</MSGNR>
+     <TEXT>Start Date must be greater or equal than today</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>005</MSGNR>
+     <TEXT>End Date must be greater than today</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>006</MSGNR>
+     <TEXT>End Date must be greater than Start Date</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>007</MSGNR>
+     <TEXT>Market is already assigned to the product</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>008</MSGNR>
+     <TEXT>Delivery Date must be greater than Market Start Date</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>009</MSGNR>
+     <TEXT>Delivery date must be less than or equal to Market End Date</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>010</MSGNR>
+     <TEXT>The business partneris &amp;1 is invalid</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>011</MSGNR>
+     <TEXT>Translation on &amp;1 is &apos;&amp;2&apos;</TEXT>
+    </T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZAR_MSG_PROD</ARBGB>
+     <MSGNR>012</MSGNR>
+     <TEXT>Drafts contain market duplicates of &amp;1</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>

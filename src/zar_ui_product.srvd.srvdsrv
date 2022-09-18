@@ -1,0 +1,12 @@
+@EndUserText.label: 'Service definition for Products'
+define service zar_ui_product {
+  expose zar_c_product as Product;
+  expose zar_c_prod_mrkt as ProductMarket;
+  expose zar_c_mrkt_order as MarketOrder;
+  expose zar_i_currency as Currency;
+  expose zar_i_market as Market;
+  expose zar_i_phase as Phase;
+  expose zar_i_prod_group as ProductGroup;
+  expose zar_i_uom as UOM;
+  expose ZAR_I_SUM_DELIV as TotalDeliv;
+}

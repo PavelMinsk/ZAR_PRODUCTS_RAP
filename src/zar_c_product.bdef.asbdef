@@ -1,0 +1,48 @@
+projection;
+strict;
+use draft;
+
+
+define behavior for zar_c_product alias Product
+// use etag
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _ProductMarket { create; with draft; }
+
+  use action move_to_next_phase;
+  use action make_copy;
+  use action get_pgname_transl;
+
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Prepare;
+  use action Resume;
+}
+
+define behavior for zar_c_prod_mrkt alias ProductMarket
+// use etag
+{
+  use update;
+  use delete;
+
+  use association _Product { with draft; }
+  use association _MarketOrder { create; with draft; }
+
+  use action confirm;
+}
+
+define behavior for zar_c_mrkt_order alias MarketOrder
+// use etag
+{
+  use update;
+  use delete;
+
+  use association _Product  { with draft; }
+  use association _ProductMarket  { with draft; }
+
+  use action confirm_order;
+}

@@ -1,0 +1,20 @@
+unmanaged implementation in class zbp_ar_suppliers_c unique;
+//strict; //Comment this line in to enable strict mode. The strict mode is prerequisite to be future proof regarding syntax and to be able to release your BO.
+
+define behavior for ZAR_SUPPLIERS_C alias Suppliers
+//late numbering
+//lock master
+//authorization master ( instance )
+etag master lastchangedat
+
+{
+//  create;
+  update;
+//  delete;
+field ( readonly ) SupplierID, Address, City, CompanyName, ContactName, ContactTitle,
+                   Country, Fax, HomePage, Phone, PostalCode, Region, lastchangedat;
+field ( mandatory ) Discount_pct;
+
+}
+
+//https://help.sap.com/docs/BTP/5371047f1273405bb46725a417f95433/df7d89c16c014323b6bae473058298c3.html?locale=en-US

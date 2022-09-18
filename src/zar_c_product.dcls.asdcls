@@ -1,0 +1,11 @@
+@EndUserText.label: 'Access control for ZAR_C_PRODUCT'
+@MappingRole: true
+define role ZAR_C_PRODUCT {
+    grant
+        select
+            on
+                ZAR_C_PRODUCT
+                    where
+                        inheriting conditions from entity zar_i_product;
+                        
+}
